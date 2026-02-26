@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手语空间 - 嵌入视频播放</title>
+    <link rel="stylesheet" href="css/video.css">
+    <script src="js/video_titles.js"></script>
+    <script>
+        // 解析URL参数
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // 获取视频ID并更新页面内容
+        function loadVideoByParameter() {
+            const bvId = getUrlParameter('bv');
+            if (!bvId) {
+                // 如果没有提供bv参数，则默认使用第一个视频
+                updateVideoContent('BV1bhMJzGEWY', getVideoTitle('BV1bhMJzGEWY'));
+                return;
+            }
+
+            // 从映射表中获取标题
+            let title = getVideoTitle(bvId);
+            let desc = '这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。';
+
+            updateVideoContent(bvId, title, desc);
+        }
+
+        function updateVideoContent(bvId, title, desc) {
+            // 更新iframe的src
+            const iframe = document.querySelector('.video-embed-container iframe');
+            iframe.src = `https://player.bilibili.com/player.html?bvid=${bvId}&autoplay=0&muted=0&danmaku=1`;
+
+            // 更新视频标题
+            document.getElementById('current-video-title').textContent = title;
+
+            // 更新动态标题区域
+            document.getElementById('dynamic-title').textContent = title;
+
+            // 更新视频描述
+            const descParagraphs = document.querySelectorAll('.video-desc');
+            if (descParagraphs.length > 0) {
+                descParagraphs[0].textContent = desc;
+            }
+
+            // 更新源链接
+            const sourceLink = document.querySelector('.source-link.bilibili');
+            sourceLink.href = `https://www.bilibili.com/video/${bvId}?spm_id_from=333.788.player.switch`;
+            
+            // 更新页面标题
+            document.title = `手语空间 - ${title}`;
+        }
+
+        // 页面加载完成后执行
+        window.onload = function() {
+            loadVideoByParameter();
+        };
+    </script>
+</head>
+<body>
+    <header class="top-div">
+        <div class="logo">
+            <img src="图片资源/其他/手语空间.png" alt="手语空间Logo">
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="video_list.html" class="active">视频</a></li>
+                <li><a href="people.html">成员</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1 id="dynamic-title"></h1>
+        </section>
+
+        <div class="video-content-container">
+            <div class="video-section">
+                <div class="video-embed-container">
+                    <!-- 嵌入B站视频，URL将通过JavaScript动态更新 -->
+                    <iframe id="video-frame" src="" allowfullscreen="true"></iframe>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="video-info">
+                    <h2 id="current-video-title"></h2>
+                    <p class="video-desc">这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。这些内容来源于与聋哑朋友的实际交流经验，更贴近真实使用场景。</p>
+                    <p class="video-desc">如果您是初学者，请按照视频顺序逐步学习；如果您已经有一定基础，可以挑选感兴趣的章节进行学习。</p>
+                    
+                    <div class="video-source">
+                        <h3>视频来源</h3>
+                        <div class="source-links">
+                            <a href="#" class="source-link bilibili" target="_blank">
+                                <img src="图片资源/其他/bilibili.png" alt="哔哩哔哩">
+                                哔哩哔哩
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <p>
+            © 2026 手语空间 | 本网站设计及代码版权归属 叶呈冰。
+            <br>
+            本站所展示的所有视频内容版权均归属于哔哩哔哩UP主 手语星球的闪电超人 所有。
+        </p>
+    </footer>
+</body>
+</html>

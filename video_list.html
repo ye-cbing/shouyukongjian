@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>手语空间 - 视频列表</title>
+        <link rel="stylesheet" href="css/beijing_.css">
+        <link rel="stylesheet" href="css/video.css">
+        <script src="js/video_titles.js"></script>
+        <script>
+            // 更新视频卡片标题的函数
+            function updateVideoCardTitles() {
+                // 更新所有视频卡片的标题
+                const videoCards = document.querySelectorAll('.video-card');
+                videoCards.forEach(card => {
+                    const link = card.querySelector('a[target="_blank"]');
+                    const videoUrl = link.href;
+                    // 从URL中提取BV号
+                    const match = videoUrl.match(/bv=([^&]*)/i);
+                    if (match && match[1]) {
+                        const bvId = match[1];
+                        const titleElement = card.querySelector('h3');
+                        const descElement = card.querySelector('p');
+                        // 使用映射表中的标题
+                        titleElement.textContent = getVideoTitle(bvId);
+                    }
+                });
+            }
+
+            // 页面加载完成后执行
+            document.addEventListener('DOMContentLoaded', function() {
+                updateVideoCardTitles();
+            });
+        </script>
+        <style>
+            .video-list-container {
+                max-width: 1200px;
+                margin: 20px auto;
+                padding: 0 20px;
+            }
+            
+            .video-list-header {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            .video-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 20px;
+            }
+            
+            .video-card {
+                background: white;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+            }
+            
+            .video-card:hover {
+                transform: translateY(-5px);
+            }
+            
+            .video-thumbnail {
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding-bottom: 56.25%; /* 16:9 比例 */
+                background-color: #000;
+                overflow: hidden;
+            }
+            
+            .video-thumbnail img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+            
+            .video-card:hover .video-thumbnail img {
+                transform: scale(1.05);
+            }
+            
+            .play-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 60px;
+                height: 60px;
+                background: rgba(0, 0, 0, 0.7);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 24px;
+                z-index: 2;
+            }
+            
+            .video-info {
+                padding: 15px;
+            }
+            
+            .video-info h3 {
+                margin: 0 0 10px 0;
+                color: #333;
+            }
+            
+            .video-info p {
+                margin: 0;
+                color: #666;
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+            
+            .video-link {
+                display: block;
+                text-align: center;
+                padding: 10px;
+                background-color: #4285f4;
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                transition: background-color 0.3s ease;
+            }
+            
+            .video-link:hover {
+                background-color: #3367d6;
+            }
+            
+            @media (max-width: 768px) {
+                .video-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="top-div">
+            <div class="logo">
+                <img src="图片资源/其他/手语空间.png" alt="手语空间Logo">
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="video_list.html" class="active">视频</a></li>
+                    <li><a href="people.html">成员</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="video-list-header">
+                <h1>手语教学视频</h1>
+                <p>以下是我们收集整理的手语教学视频，帮助您更好地学习手语</p>
+            </section>
+
+            <div class="video-list-container">
+                <div class="video-grid">
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1bhMJzGEWY" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/e3677a8e6041339f87dce61844d835e8afe54281.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1bhMJzGEWY" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1x6Tfz1EW6" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/6727036b212174c087846b65cf2f1f4436658662.jpg" alt="你叫什么？—我没有叫啊！冤枉啊包包大人！">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>你叫什么？—我没有叫啊！冤枉啊包包大人！</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1x6Tfz1EW6" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1uzNjzbEGH" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/bf002dcc422c3587387ef9cdfa56b879d23a6a9b.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1uzNjzbEGH" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1cANHzbERr" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/a28f40f942cae5e60da469c7767f695d4e8f6bba.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1cANHzbERr" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1AaKGzrELG" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/0950c30e7a1c4e1da371ed87078875e740724a08.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1AaKGzrELG" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1mTKmzyE3M" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/2ae83bbb31f114d768fe0e9cab6aa0f4bd6b913f.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1mTKmzyE3M" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1so3xz8Ea8" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/6b3cbab27a504669f7d3f464f1ebe4a8d00ecccd.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1so3xz8Ea8" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1dB3DzUEPg" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/d3e01978b851e97483af449e12a871f411793133.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1dB3DzUEPg" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV11VGnz7ENx" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/ce51146b3c4b9bb7c1724799a7dd3be1ef90e72d.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV11VGnz7ENx" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1qoM9zpEuT" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/e570813c5dc3a84dd7fd0982f46b0d003000b7a4.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1qoM9zpEuT" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1yCutzFE8C" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/11b9e7873948a66388fda3f30a55afc10487b82e.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1yCutzFE8C" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1QCbZzgENT" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/1c13d3771ab2177fa8bf509803b6d8decfe7ff94.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1QCbZzgENT" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1A38tzyEdS" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/3629a32b2a686854314d3006d8c4c979b5ed7ed9.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1A38tzyEdS" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1SAhPzREb9" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/37df999f9199c7fc912ad4ba803c084f50fbcd7f.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1SAhPzREb9" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1UktPz7ExN" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/158ce3e067a91a65ad56e8a1ecb02cbc41693f42.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1UktPz7ExN" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV12tbazsEka" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/003cc7b0b56b7c12328eeca967f462395f154a0c.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV12tbazsEka" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1KSYvzkEpY" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/14754ea8e9757a9f8e9e285efd82484ada47d9ee.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1KSYvzkEpY" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1MGeVzHEH6" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/ab127f92af403a8eb4cbed1317e71dc50434cad2.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1MGeVzHEH6" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1hGeBztE72" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/8f3f8354bcc9784b1264201469f0931e8807b6b3.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1hGeBztE72" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1UDe1zyEm8" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/a521c862ca0712dc476886a94ee9e8ce1cf269bd.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1UDe1zyEm8" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1xohBz2EaR" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/5c26da0ea8f0f5cb906ec8bfcbaf0d267d07b587.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1xohBz2EaR" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1AVa6zUEYC" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/40b6e3bb573b805266d1c04f49ed1225c0a0c953.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1AVa6zUEYC" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1VmaqzZE19" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/76d5250cd0586a1aa911d2d328ab6ae59aa5709d.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1VmaqzZE19" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1J7HQzEEBZ" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/a20643e61e8e8a581c129e22b754ece8848db6eb.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1J7HQzEEBZ" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1K7pXzwEEf" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/5f27478d1387cc378334463ff8ae4782b52ea0cb.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1K7pXzwEEf" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1S4HpzUELb" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/7b0ba1fc504878e82fec4cf27b69adfebe1bf292.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1S4HpzUELb" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1TXxxzPELw" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/bc1cd4106a3ebac7fe7d87d2806a5c32b6134d54.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1TXxxzPELw" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV14e4czAEdJ" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/4ea16a49fe55a882e681b11c5fdddb48fcd90506.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV14e4czAEdJ" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1DgWbzrE4o" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/1de0f0eefc89b1e781c277d8cd1805770b22cc5f.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1DgWbzrE4o" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1P7shzzEqT" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/2814c0bfa7ee2adbaa022bff45ace9861c4d589e.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1P7shzzEqT" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV165sfz5ET7" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/e038700d769f884b202f47c133dd5ba04ff9ce71.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV165sfz5ET7" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1wCyWB7E4n" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/ac398540bd753c34daf24e34633fba02fddf69fd.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1wCyWB7E4n" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV14m1LBvE8q" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/91ab5a751c2e261db50e8d8014d5de3822c342bf.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV14m1LBvE8q" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1aD1WBvEmQ" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/775493393e89b75ae7d565f3f795a8b54cd53f27.jpg" alt="特殊视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>特殊视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1aD1WBvEmQ" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1RoC7BJExw" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/c06e271c2aad0edc681a1df69dfa0d9ba0dad114.jpg" alt="自测">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>自测</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1RoC7BJExw" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1ATCdBMEpJ" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i0.hdslb.com/bfs/archive/64e61c30841d8a4c4dff902aa07c771cd9ba0c1d.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1ATCdBMEpJ" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1PnyPBhEYK" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/9b3a088e09f248e726ccd227a6eedc688b0b9283.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1PnyPBhEYK" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1TvUrBnEQJ" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i1.hdslb.com/bfs/archive/60d887bd3b2c6613b2da24d60e89eae6477216bb.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1TvUrBnEQJ" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1qMSFBDE7w" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/529b945500274b9e9a2e93a32a0770d4cc8c86a9.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1qMSFBDE7w" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                    
+                    <div class="video-card">
+                        <a href="embedded_video.html?bv=BV1GF2xBGEw9" target="_blank">
+                            <div class="video-thumbnail">
+                                <img src="http://i2.hdslb.com/bfs/archive/b405c342db9d390da77c44eac58eb9c9b3f4999d.jpg" alt="手语视频">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </a>
+                        <div class="video-info">
+                            <h3>手语视频</h3>
+                            <p>这是一个手语学习视频，通过日常交流中常用的手语帮助您掌握基本的手语表达方式。</p>
+                        </div>
+                        <a href="embedded_video.html?bv=BV1GF2xBGEw9" class="video-link" target="_blank">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="page-footer">
+            <p>
+                © 2026 手语空间 | 本网站设计及代码版权归属 叶呈冰。
+                <br>
+                本站所展示的所有视频内容版权均归属于哔哩哔哩UP主 手语星球的闪电超人 所有。
+            </p>
+        </footer>
+    </body>
+</html>
