@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>手语空间</title>
+        <link rel="stylesheet" href="css/beijing_.css">
+        <script src="js/video_titles.js"></script>
+        <script>
+            // 更新视频项标题的函数
+            function updateVideoTitles() {
+                // 更新所有视频项的标题
+                const videoItems = document.querySelectorAll('.video-item');
+                videoItems.forEach(item => {
+                    const link = item.querySelector('a.video-link');
+                    const videoUrl = link.href;
+                    // 从URL中提取BV号
+                    const match = videoUrl.match(/bv=([^&]*)/i);
+                    if (match && match[1]) {
+                        const bvId = match[1];
+                        const titleElement = item.querySelector('.video-title');
+                        // 使用映射表中的标题
+                        titleElement.textContent = getVideoTitle(bvId);
+                    }
+                });
+            }
+
+            // 页面加载完成后执行
+            document.addEventListener('DOMContentLoaded', function() {
+                updateVideoTitles();
+            });
+        </script>
+    </head>
+    <body>
+        <header class="top-div">
+            <div class="logo">
+                <img src="图片资源/其他/手语空间.png" alt="手语空间Logo">
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">首页</a></li>
+                    <li><a href="video_list.html">视频</a></li>
+                    <li><a href="people.html">成员</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h2>欢迎来到手语空间</h2>
+                    <p>在这里您可以学习和了解更多关于手语的知识</p>
+                </div>
+            </section>
+
+            <section class="bai">
+                <h3>推荐视频</h3>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <a target="_blank" href="embedded_video.html?bv=BV1bhMJzGEWY" class="video-link">
+                            <img class="imgcome" src="http://i2.hdslb.com/bfs/archive/e3677a8e6041339f87dce61844d835e8afe54281.jpg" alt="手语视频">
+                            <div class="video-title">手语视频</div>
+                        </a>
+                    </div>
+                    
+                    <div class="video-item">
+                        <a target="_blank" href="embedded_video.html?bv=BV1x6Tfz1EW6" class="video-link">
+                            <img class="imgcome" src="http://i1.hdslb.com/bfs/archive/6727036b212174c087846b65cf2f1f4436658662.jpg" alt="你叫什么？—我没有叫啊！冤枉啊包包大人！">
+                            <div class="video-title">你叫什么？—我没有叫啊！冤枉啊包包大人！</div>
+                        </a>
+                    </div>
+                    
+                    <div class="video-item">
+                        <a target="_blank" href="embedded_video.html?bv=BV1uzNjzbEGH" class="video-link">
+                            <img class="imgcome" src="http://i0.hdslb.com/bfs/archive/bf002dcc422c3587387ef9cdfa56b879d23a6a9b.jpg" alt="手语视频">
+                            <div class="video-title">手语视频</div>
+                        </a>
+                    </div>
+                    
+                    <div class="video-item">
+                        <a target="_blank" href="embedded_video.html?bv=BV1cANHzbERr" class="video-link">
+                            <img class="imgcome" src="http://i0.hdslb.com/bfs/archive/a28f40f942cae5e60da469c7767f695d4e8f6bba.jpg" alt="手语视频">
+                            <div class="video-title">手语视频</div>
+                        </a>
+                    </div>
+                    
+                    <div class="video-item">
+                        <a target="_blank" href="embedded_video.html?bv=BV1AaKGzrELG" class="video-link">
+                            <img class="imgcome" src="http://i2.hdslb.com/bfs/archive/0950c30e7a1c4e1da371ed87078875e740724a08.jpg" alt="手语视频">
+                            <div class="video-title">手语视频</div>
+                        </a>
+                    </div>
+                    
+                    <div class="video-item">
+                        <a target="_blank" href="embedded_video.html?bv=BV1mTKmzyE3M" class="video-link">
+                            <img class="imgcome" src="http://i1.hdslb.com/bfs/archive/2ae83bbb31f114d768fe0e9cab6aa0f4bd6b913f.jpg" alt="手语视频">
+                            <div class="video-title">手语视频</div>
+                        </a>
+                    </div>
+                    
+                    <div class="video-item">
+                        <a target="_blank" href="embedded_video.html?bv=BV1so3xz8Ea8" class="video-link">
+                            <img class="imgcome" src="http://i2.hdslb.com/bfs/archive/6b3cbab27a504669f7d3f464f1ebe4a8d00ecccd.jpg" alt="手语视频">
+                            <div class="video-title">手语视频</div>
+                        </a>
+                    </div>
+                    
+                    <div class="video-item">
+                        <a target="_blank" href="embedded_video.html?bv=BV1dB3DzUEPg" class="video-link">
+                            <img class="imgcome" src="http://i1.hdslb.com/bfs/archive/d3e01978b851e97483af449e12a871f411793133.jpg" alt="手语视频">
+                            <div class="video-title">手语视频</div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <div class="feature-card">
+                    <div class="feature-icon">👐</div>
+                    <h3>丰富的手语内容</h3>
+                    <p>提供各种手语教学视频，涵盖基础手语内容</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👩‍💻</div>
+                    <h3>技术爱好者</h3>
+                    <p>由一群热爱技术的初中生创建和维护，不定时同步B站视频。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>互相交流</h3>
+                    <p>与志同道合的朋友们一起交流研究，视频供学习参考。</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="page-footer">
+            <p>
+                © 2026 手语空间 | 本网站设计及代码版权归属 叶呈冰。
+                <br>
+                本站所展示的所有视频内容版权均归属于哔哩哔哩UP主 手语星球的闪电超人 所有。
+            </p>
+        </footer>
+    </body>
+</html>
